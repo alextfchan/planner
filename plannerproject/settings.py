@@ -91,11 +91,14 @@ WSGI_APPLICATION = 'plannerproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('dbname'),
+        'USER': os.getenv('dbuser'),
+        'PASSWORD': os.getenv('dbpass'),
+        'HOST': os.getenv('dbhost'),
+        'PORT': os.getenv('dbport'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
