@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <title> To Do List Item {{ list_name.title }}</title>
+</head>
+
+
+    <body>
+        <h1>
+            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
+        </h1>
+    </div>
+        <h2>
+        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
+        </h2>
+    </div>
+
+    <h3>Edit current list:</h3>
+    <h6>{{ list_name.title | upper }}</h6>
+    </div>
+    
+    <ul>
+        {% for todoitem in object_list %}
+        <li>
+            <div
+                role="button"
+                onclick="location.href='#'">
+                {{ todoitem.title }}
+            </div>
+        </li>
+
+        {% empty %}
+        <h4>You currently do not have any items to do for this list.</h4>
+        {% endfor %}
+
+    </ul>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <title> To Do Lists</title>
+</head>
+
+
+    <body>
+        <h1>
+            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
+        </h1>
+    </div>
+        <h2>
+        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
+        </h2>
+    </div>
+    {% if object_list%}
+    <h3>Here are the current To Do Lists.</h3>
+    {% endif %}
+    <ul>
+        {% for todolist in object_list %}
+        <li>
+            <div
+                role="button"
+                onclick="location.href='{% url "app_todo:list" todolist.id %}'">
+                {{ todolist.list_name }}
+            </div>
+        </li>
+
+        {% empty %}
+        <h4>You currently do not have any lists to do.</h4>
+        {% endfor %}
+
+    </ul>
+    </body>
+</html>
