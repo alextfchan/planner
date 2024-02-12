@@ -7,17 +7,7 @@ from django.views.generic import (
     CreateView,
     UpdateView,
 )
-
 from apptodolist.models import ToDoList, ToDoListItem
-
-
-
-# def todotest(request):
-#     # x = calculate()
-#     return render(request, 'todo.html', {'name' : 'Testing!'})
-
-# def todolist():
-#     pass
 
 class ListOfToDos(ListView):
     model = ToDoList
@@ -30,16 +20,19 @@ class ListOfToDoItems(ListView):
     model = ToDoListItem
     template_name = 'todoitems.html'
 
-    def get_lists_query(self):
+    def get_queryset(self):
         ''' 
         The self.kwargs["listid"] will be referenced within the urls.py file
         - The parameter will be the specific list (listid), as we do not want every
         single item created without a list filter.
         '''
-        return ToDoListItem.objects.filter(list_id=self.kwargs["listid"])
+        return ToDoListItem.objects.filter(list_name_id=self.kwargs["listid"])
     
     def get_context_data(self) -> dict[str, Any]:
         context = super().get_context_data()
         # list_name refers to the foreign key within ToDoListItem data model.
         context["list_name"] = ToDoList.objects.get(id=self.kwargs["listid"])
         return context
+    
+
+# onclick="location.href='{% url "app_todo:list" todolist.id %}'">

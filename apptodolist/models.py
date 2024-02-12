@@ -11,7 +11,7 @@ from django.urls import reverse
 
 class ToDoList(models.Model):
     ''' This class is for each ToDoList title. '''
-    
+
     list_name = models.CharField(max_length=100, unique = True)
     created_date = models.DateTimeField(auto_now_add=True)
 
