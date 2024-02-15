@@ -38,17 +38,6 @@ class ToDoListItem(models.Model):
     def item_id_url(self):
         ''' Returns the URL for the specific ToDoListItem. '''
         return reverse('itemid', args=[str(self.list_name.id), str(self.id)])
-    
+
     def __str__(self):
         return f"{self.item_name}, from list: {self.list_name}"
-
-
-
-
-    pass
-
-# CRUD
-
-
-# Lines 13 to 14 and 26 to 29 implement the .get_absolute_url() method, a Django convention for data models. This function returns the URL for the particular data item. This allows you to reference the URL conveniently and robustly in your code. The return statement of both implementations of .get_absolute_url() uses reverse() to avoid hard-coding the URL and its parameters.
-

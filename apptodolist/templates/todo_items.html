@@ -22,7 +22,7 @@
         {% for item in object_list %}
         <li>
             <div>
-                <div role="button" onclick="location.href='{% url "app_todo:list" item.id}'"> 
+                <div role="button" onclick="location.href='{% url "app_todo:list" item.id %}'"> 
                 {{ item.item_name }}
 
                 </div>
@@ -34,5 +34,9 @@
         {% endfor %}
 
     </ul>
+    <p>
+        <input value="Add a new item" type="button"
+        onclick="location.href='{% url "app_todo:item_add" list_name.id %}'"/>
+    </p>
     </body>
 </html>

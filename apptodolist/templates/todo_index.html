@@ -14,6 +14,7 @@
         <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
         </h2>
     </div>
+    
     {% if object_list%}
     <h3>Here are the current To Do Lists.</h3>
     {% endif %}
@@ -30,7 +31,10 @@
         {% empty %}
         <h4>You currently do not have any lists to do.</h4>
         {% endfor %}
-
     </ul>
+    <p>
+        <input value="Add a new list" type="button"
+        onclick="location.href='{% url "app_todo:list_add" %}'"/>
+    </p>
     </body>
 </html>

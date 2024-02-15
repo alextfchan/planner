@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <title> To Do Lists</title>
+</head>
+
+
+    <body>
+        <h1>
+            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
+        </h1>
+    <div>
+        <h2>
+        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
+        </h2>
+    </div>
+
+    <h3>{{ list_name }}</h3>
+    <div>
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input value="Save" type="submit">
+                <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:app_todo" %}';">
+            </form>
+        </div>
+    </div>
+    </body>
+</html>
