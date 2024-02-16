@@ -23,8 +23,13 @@
                 <table>
                     {{ form.as_table }}
                 </table>
-                <input type="submit" value="Submit">
-                <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:list" list_name.id %}'">
+                <input value="Submit" type="submit"/>
+                
+                <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:list" list_name.id %}'"/>
+
+                {% if object %}
+                <input value="Delete Item" type="button" onclick="location.href='{% url "app_todo:item_delete" list_name.id object.id %}'"/>
+                {% endif %}
             </form>
         </div>
     </div>

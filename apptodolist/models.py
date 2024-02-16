@@ -15,9 +15,9 @@ class ToDoList(models.Model):
     list_name = models.CharField(max_length=100, unique = True)
     created_date = models.DateTimeField(auto_now_add=True)
 
-    def list_id_url(self):
+    def get_absolute_url(self):
         ''' Returns the URL for the specific ToDoList. '''
-        return reverse ('listid', args=[self.id])
+        return reverse ('list', args=[self.id])
 
     def __str__(self):
         return self.list_name
@@ -35,9 +35,9 @@ class ToDoListItem(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
 
-    def item_id_url(self):
+    def get_absolute_url(self):
         ''' Returns the URL for the specific ToDoListItem. '''
-        return reverse('itemid', args=[str(self.list_name.id), str(self.id)])
+        return reverse('item_update', args=[str(self.list_name.id), str(self.id)])
 
-    def __str__(self):
-        return f"{self.item_name}, from list: {self.list_name}"
+    # def __str__(self):
+    #     return f"{self.item_name}, from list: {self.list_name}"
