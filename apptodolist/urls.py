@@ -16,6 +16,7 @@ urlpatterns = [
          views.ListOfToDoItems.as_view(),
          name = 'list'),
 
+
     # Create List and Item patterns
     path('add/',
          views.CreateList.as_view(),

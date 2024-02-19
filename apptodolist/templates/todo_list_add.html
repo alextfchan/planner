@@ -1,19 +1,10 @@
-<html lang="en">
+{% extends "header.html" %}
 
-<head>
-    <title> To Do Lists</title>
-</head>
+{% block title %}
+    <h2><a href="{% url 'app_todo:app_todo' %}"> To Do List</a></h2>
+{% endblock %}
 
-
-    <body>
-        <h1>
-            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
-        </h1>
-    <div>
-        <h2>
-        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
-        </h2>
-    </div>
+{% block content %}
 
     <h3>{{ list_name }}</h3>
     <div>
@@ -26,5 +17,5 @@
             </form>
         </div>
     </div>
-    </body>
-</html>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <title>Organiser</title>
+</head>
+
+<style>
+    div.headers {text-align: center;}
+</style>
+
+<body>
+    <div class="headers">
+        <h1>
+            <a href="{% url 'app_index:app_index' %}"> Brain</a>
+        </h1>
+    </div>
+
+    <div class="headers">
+    <tr><a href="{% url 'app_todo:app_todo' %}"> To Do List</a></tr>
+    <tr><a href="{% url 'app_job:app_job' %}"> Job Application Tracker</a></tr>
+    </div>
+
+    {% block title %}
+    <!--title of the application will be replaced for each page/ application here-->
+    {% endblock %}
+
+    {% block content %}
+    <!--content will be replaced for each page here-->
+    {% endblock %}
+
+</body>
+</html>

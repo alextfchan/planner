@@ -1,19 +1,10 @@
-<html lang="en">
+{% extends "header.html" %}
 
-<head>
-    <title>To Do List Item</title>
-</head>
+{% block title %}
+    <h2><a href="{% url 'app_todo:app_todo' %}"> To Do List</a></h2>
+{% endblock %}
 
-
-    <body>
-        <h1>
-            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
-        </h1>
-    </div>
-        <h2>
-        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
-        </h2>
-    </div>
+{% block content %}
 
     <h3>Delete To-Do List</h3>
     </div>
@@ -30,4 +21,5 @@
         <input value="Delete" type="submit">
         <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:app_todo" %}';"/>
     </form>
-</body>
+
+{% endblock %}

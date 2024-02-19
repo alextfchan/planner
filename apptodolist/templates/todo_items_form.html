@@ -1,35 +1,25 @@
-<html lang="en">
+{% extends "header.html" %}
 
-<head>
-    <title> To Do Lists</title>
-</head>
+{% block title %}
+    <h2><a href="{% url 'app_todo:app_todo' %}"> To Do List</a></h2>
+{% endblock %}
 
-
-    <body>
-        <h1>
-            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
-        </h1>
-    </div>
-        <h2>
-        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
-        </h2>
-    </div>
+{% block content %}
 
     <h3>{{ list_name }}</h3>
-    <div>
-        <div>
-            <form method="post">
-                {% csrf_token %}
-                <table>
-                    {{ form.as_table }}
-                </table>
-                <input value="Submit" type="submit"/>
-                
-                <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:list" list_name.id %}'"/>
 
-                {% if object %}
-                <input value="Delete Item" type="button" onclick="location.href='{% url "app_todo:item_delete" list_name.id object.id %}'"/>
-                {% endif %}
-            </form>
-        </div>
-    </div>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input value="Submit" type="submit"/>
+        
+        <input value="Cancel" type="button" onclick="location.href='{% url "app_todo:list" list_name.id %}'"/>
+
+        {% if object %}
+        <input value="Delete Item" type="button" onclick="location.href='{% url "app_todo:item_delete" list_name.id object.id %}'"/>
+        {% endif %}
+    </form>
+
+{% endblock %}

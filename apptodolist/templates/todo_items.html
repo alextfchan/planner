@@ -1,39 +1,26 @@
-<html lang="en">
+{% extends "header.html" %}
 
-<head>
-    <title>To Do List Item</title>
-</head>
+{% block title %}
+    <h2><a href="{% url 'app_todo:app_todo' %}"> To Do List</a></h2>
+{% endblock %}
 
-
-    <body>
-        <h1>
-            <a href="{% url 'app_index:app_index' %}"> Index Page</a>
-        </h1>
-    </div>
-        <h2>
-        <a href="{% url 'app_todo:app_todo' %}"> To Do Lists</a>
-        </h2>
-    </div>
+{% block content %}
 
     <h3>Edit current list: {{ list_name }}</h3>
-    </div>
-    
+
     <ul>
         {% for item in object_list %}
         <li>
-            <div>
                 <div role="button" onclick="location.href='{% url "app_todo:item_update" list_name.id item.id %}'"> 
                 {{ item.item_name }}
-
                 </div>
-            </div>
         </li>
 
         {% empty %}
         <h4>You currently do not have any items to do for this list.</h4>
         {% endfor %}
-
     </ul>
+
     <p>
         <input value="Add a new item"
         type="button"
@@ -43,5 +30,5 @@
         type="button"
         onclick="location.href='{% url "app_todo:list_delete" list_name.id %}';"/>
     </p>
-    </body>
-</html>
+
+{% endblock %}
