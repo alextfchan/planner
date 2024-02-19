@@ -39,5 +39,5 @@ class ToDoListItem(models.Model):
         ''' Returns the URL for the specific ToDoListItem. '''
         return reverse('item_update', args=[str(self.list_name.id), str(self.id)])
 
-    # def __str__(self):
-    #     return f"{self.item_name}, from list: {self.list_name}"
+    def __str__(self):
+        return f"{self.item_name}, from list: {self.list_name}"

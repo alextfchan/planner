@@ -1,6 +1,4 @@
 from typing import Any
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.views.generic import (
     ListView,
@@ -13,8 +11,6 @@ from apptodolist.models import ToDoList, ToDoListItem
 
 class ListOfToDos(ListView):
     model = ToDoList
-    # template_name allows you to generate a HTML dynamically.
-    # Will allow for dynamic HTML links for each list ID.
     template_name = 'todo_index.html'
 
 
@@ -31,6 +27,9 @@ class ListOfToDoItems(ListView):
         return ToDoListItem.objects.filter(list_name_id=self.kwargs['listid'])
 
     def get_context_data(self) -> dict[str, Any]:
+        '''
+        Function allows for adding to specific lists, rather than overwriting it.
+        '''
         context = super().get_context_data()
         # list_name refers to the foreign key within ToDoListItem data model.
         context['list_name'] = ToDoList.objects.get(id=self.kwargs['listid'])
@@ -101,7 +100,7 @@ class UpdateItem(UpdateView):
         'status',
     ]
 
-    def get_context_data(self):
+    def get_context_data(self) -> dict[str, Any]:
         context = super().get_context_data()
         context['list_name'] = self.object.list_name
         context['item_name'] = 'Update item contents'
@@ -115,7 +114,8 @@ class DeleteList(DeleteView):
     model = ToDoList
     template_name = 'todo_list_delete.html'
     success_url = reverse_lazy('app_todo:app_todo')
-    # Later functionality: can change the 'cancel' button to redirect to the list of items page, rather than index.
+    # Later potential feature:
+    # can change the 'cancel' button to redirect to the list of items page, rather than index.
 
 
 class DeleteItem(DeleteView):
@@ -124,8 +124,9 @@ class DeleteItem(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('app_todo:list', args=[self.kwargs['listid']])
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['list_name'] = self.object.list_name
         return context
+    
