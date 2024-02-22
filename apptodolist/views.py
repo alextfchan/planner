@@ -1,5 +1,6 @@
 from typing import Any
 from django.urls import reverse, reverse_lazy
+# from django.shortcuts import get_object_or_404 #, render, redirect
 from django.views.generic import (
     ListView,
     CreateView,
@@ -24,6 +25,7 @@ class ListOfToDoItems(ListView):
         - The parameter will be the specific list (listid), as we do not want every
         single item created without a list filter.
         '''
+        
         return ToDoListItem.objects.filter(list_name_id=self.kwargs['listid'])
 
     def get_context_data(self) -> dict[str, Any]:

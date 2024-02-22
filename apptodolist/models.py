@@ -17,7 +17,7 @@ class ToDoList(models.Model):
 
     def get_absolute_url(self):
         ''' Returns the URL for the specific ToDoList. '''
-        return reverse ('list', args=[self.id])
+        return reverse ('app_todo:list', args=[self.id])
 
     def __str__(self):
         return self.list_name
@@ -37,7 +37,7 @@ class ToDoListItem(models.Model):
 
     def get_absolute_url(self):
         ''' Returns the URL for the specific ToDoListItem. '''
-        return reverse('item_update', args=[str(self.list_name.id), str(self.id)])
+        return reverse('app_todo:item_update', args=[str(self.list_name.id), str(self.id)])
 
     def __str__(self):
         return f"{self.item_name}, from list: {self.list_name}"
