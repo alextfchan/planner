@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apptodolist',
     'job_tracker_app',
     'debug_toolbar',
+    'app_pomodoro',
 ]
 
 MIDDLEWARE = [
