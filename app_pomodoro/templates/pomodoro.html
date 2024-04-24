@@ -1,6 +1,22 @@
 {% extends "header.html" %}
+{% load static %}
 
-{% block title %}
-    <h2><a href="{% url 'app_pomodoro:app_pomodoro' %}"> Pomodoro Timer</a></h2>
-{% endblock %}
+    {% block title %}
+        <h2><a href="{% url 'app_pomodoro:app_pomodoro' %}"> Pomodoro Timer</a></h2>
+        <script src="{% static 'app.js' %}"></script>
+    {% endblock %}
 
+
+    {% block content %}
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Timer</button>
+        </form>
+        <button id="startButton">Start</button>
+        <button id="pauseButton">Pause</button>
+        <div id="timerDisplay"></div>
+    </body>
+
+    {% endblock %}
