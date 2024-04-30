@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index_app',
     'apptodolist',
-    'job_tracker_app',
+    # 'job_tracker_app',
     'debug_toolbar',
     'app_pomodoro',
 ]

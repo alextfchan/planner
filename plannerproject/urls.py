@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('index_app.urls', namespace='app_index')),
     path('planner/', include('apptodolist.urls', namespace='app_todo')),
-    path('applications/', include('job_tracker_app.urls', namespace='app_job')),
+    # path('applications/', include('job_tracker_app.urls', namespace='app_job')),
     path('pomodoro/', include('app_pomodoro.urls', namespace='app_pomodoro')),
     path('__debug__/', include(debug_toolbar.urls)),
 ]
